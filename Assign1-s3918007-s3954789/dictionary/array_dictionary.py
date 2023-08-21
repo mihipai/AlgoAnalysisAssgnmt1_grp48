@@ -53,6 +53,7 @@ class ArrayDictionary(BaseDictionary):
         :return: True whether succeeded, False when word is already in the dictionary
         """
         # TO BE IMPLEMENTED
+        #use WordFrequency class to add the word and frequency
 
         return False
 
@@ -64,6 +65,7 @@ class ArrayDictionary(BaseDictionary):
         """
         # find the position of 'word' in the list, if exists, will be at idx-1
         # TO BE IMPLEMENTED
+        #use WordFrequency class to search for word and delete both word and frequency
 
         return False
 
@@ -74,4 +76,5 @@ class ArrayDictionary(BaseDictionary):
         @param prefix_word: word to be autocompleted
         @return: a list (could be empty) of (at most) 3 most-frequent words with prefix 'prefix_word'
         """
+        #use WordFrequency class to search for top 3 most frequent words and add both key+value to the returning array
         return []
