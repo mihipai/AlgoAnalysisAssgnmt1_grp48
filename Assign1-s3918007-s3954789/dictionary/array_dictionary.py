@@ -3,6 +3,7 @@ from dictionary.base_dictionary import BaseDictionary
 import bisect
 
 
+
 # ------------------------------------------------------------------------
 # This class is required TO BE IMPLEMENTED
 # Array-based dictionary implementation
@@ -44,7 +45,7 @@ class ArrayDictionary(BaseDictionary):
         # TO BE IMPLEMENTED
         #use WordFrequency class to search for word and return the frequency
 
-        return 0
+        return self.word_dict.get(word,0)
 
     def add_word_frequency(self, word_frequency: WordFrequency) -> bool:
         """
@@ -54,6 +55,11 @@ class ArrayDictionary(BaseDictionary):
         """
         # TO BE IMPLEMENTED
         #use WordFrequency class to add the word and frequency
+        word, frequency = word_frequency
+
+        if word not in self.word_dict:
+            self.word_dict[word] = frequency
+            return True
 
         return False
 
@@ -67,6 +73,9 @@ class ArrayDictionary(BaseDictionary):
         # TO BE IMPLEMENTED
         #use WordFrequency class to search for word and delete both word and frequency
 
+        if word in self.word_dict:
+         del self.word_dict[word]
+         return True
         return False
 
 
@@ -78,3 +87,8 @@ class ArrayDictionary(BaseDictionary):
         """
         #use WordFrequency class to search for top 3 most frequent words and add both key+value to the returning array
         return []
+        words_with_prefix = [(word, freq) for word, freq in self.word_dict.items() if word.startswith(prefix_word)]
+        
+        words_with_prefix.sort(key = lambda x: x[1], reverse = True)
+
+        return words_with_prefix [:3]
