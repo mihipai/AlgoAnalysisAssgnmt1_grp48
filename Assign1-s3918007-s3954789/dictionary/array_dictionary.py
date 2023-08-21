@@ -3,6 +3,7 @@ from dictionary.base_dictionary import BaseDictionary
 import bisect
 
 
+
 # ------------------------------------------------------------------------
 # This class is required TO BE IMPLEMENTED
 # Array-based dictionary implementation
@@ -43,7 +44,7 @@ class ArrayDictionary(BaseDictionary):
         """
         # TO BE IMPLEMENTED
 
-        return 0
+        return self.word_dict.get(word,0)
 
     def add_word_frequency(self, word_frequency: WordFrequency) -> bool:
         """
@@ -52,6 +53,11 @@ class ArrayDictionary(BaseDictionary):
         :return: True whether succeeded, False when word is already in the dictionary
         """
         # TO BE IMPLEMENTED
+        word, frequency = word_frequency
+
+        if word not in self.word_dict:
+            self.word_dict[word] = frequency
+            return True
 
         return False
 
@@ -63,7 +69,9 @@ class ArrayDictionary(BaseDictionary):
         """
         # find the position of 'word' in the list, if exists, will be at idx-1
         # TO BE IMPLEMENTED
-
+        if word in self.word_dict:
+         del self.word_dict[word]
+         return True
         return False
 
 
@@ -73,4 +81,8 @@ class ArrayDictionary(BaseDictionary):
         @param prefix_word: word to be autocompleted
         @return: a list (could be empty) of (at most) 3 most-frequent words with prefix 'prefix_word'
         """
-        return []
+        words_with_prefix = [(word, freq) for word, freq in self.word_dict.items() if word.startswith(prefix_word)]
+        
+        words_with_prefix.sort(key = lambda x: x[1], reverse = True)
+
+        return words_with_prefix [:3]
