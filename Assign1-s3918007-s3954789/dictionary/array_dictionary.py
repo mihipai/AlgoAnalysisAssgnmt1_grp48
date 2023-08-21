@@ -43,6 +43,7 @@ class ArrayDictionary(BaseDictionary):
         # @return: frequency > 0 if found and 0 if NOT found
         """
         # TO BE IMPLEMENTED
+        #use WordFrequency class to search for word and return the frequency
 
         return self.word_dict.get(word,0)
 
