@@ -15,6 +15,8 @@ class ArrayDictionary(BaseDictionary):
 
     def __init__(self):
         # TO BE IMPLEMENTED
+        arr = []
+        
         pass
 
 
@@ -25,12 +27,19 @@ class ArrayDictionary(BaseDictionary):
         """
         # TO BE IMPLEMENTED
 
+        filename = 'sampleData.txt'
+        my_dict = {}
+        with open(filename , 'r') as file:
+            for line in file:
+                key, value = line.strip().split(':')
+                my_dict[key] = value
+
 
     def search(self, word: str) -> int:
         """
-        search for a word
-        @param word: the word to be searched
-        @return: frequency > 0 if found and 0 if NOT found
+        # search for a word
+        # @param word: the word to be searched
+        # @return: frequency > 0 if found and 0 if NOT found
         """
         # TO BE IMPLEMENTED
 
