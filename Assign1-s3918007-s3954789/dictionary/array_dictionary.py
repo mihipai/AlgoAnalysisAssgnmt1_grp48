@@ -4,6 +4,7 @@ import bisect
 
 
 
+
 # ------------------------------------------------------------------------
 # This class is required TO BE IMPLEMENTED
 # Array-based dictionary implementation
@@ -16,9 +17,9 @@ class ArrayDictionary(BaseDictionary):
 
     def __init__(self):
         # TO BE IMPLEMENTED
-        arr = []
+        self.word_dict = []
         
-        pass
+        #pass
 
 
     def build_dictionary(self, words_frequencies: [WordFrequency]):
@@ -29,11 +30,12 @@ class ArrayDictionary(BaseDictionary):
         # TO BE IMPLEMENTED
 
         filename = 'sampleData.txt'
-        my_dict = {}
         with open(filename , 'r') as file:
             for line in file:
                 key, value = line.strip().split(':')
-                my_dict[key] = value
+                self.word_dict.append(set(key,value))
+
+        self.word_dict = self.word_dict.sort()        
 
 
     def search(self, word: str) -> int:
@@ -44,8 +46,8 @@ class ArrayDictionary(BaseDictionary):
         """
         # TO BE IMPLEMENTED
         #use WordFrequency class to search for word and return the frequency
-
-        return self.word_dict.get(word,0)
+        
+        #return self.word_dict.get(word,0)
 
     def add_word_frequency(self, word_frequency: WordFrequency) -> bool:
         """
